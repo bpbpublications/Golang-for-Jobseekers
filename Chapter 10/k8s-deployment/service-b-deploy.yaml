@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: looper
+  labels:
+    app: looper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: looper
+  template:
+    metadata:
+      labels:
+        app: looper
+    spec:
+      containers:
+      - name: looper
+        image: gcr.io/<project id>/looper:v1
+        env:
+        - name: SERVICE_A_URL
+          value: http://web.default.svc:8080/revenue

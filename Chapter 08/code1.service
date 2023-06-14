@@ -1,0 +1,15 @@
+# Systemd file
+[Unit]
+Description=Golang Application
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=golang-app
+Group=golang-app
+Restart=on-failure
+ExecStart=/usr/local/bin/golang-app
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
